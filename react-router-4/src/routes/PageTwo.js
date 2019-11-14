@@ -3,8 +3,14 @@ import { Link } from 'dva/router';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 import Line from './Line';
+import Three from'./bundle-loader/ThreeContainer';
+import Four from'./react-loadable';
 
-function IndexPage() {
+class IndexPage extends React.Component {
+  state={
+    isAsync:false
+  }
+  render(){
   return (
     <div className={styles.normal}>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
@@ -18,9 +24,17 @@ function IndexPage() {
             pageTwo
           </Link>
         </li>
+        <li>
+        <button onClick={()=>{this.setState({isAsync: !this.state.isAsync})}}>{this.state.isAsync ?'点击 隐藏' : '点击 异步加载'}</button>
+        {/** bundle-loader*/}
+        {this.state.isAsync && <Three />}
+        {/** react-loadable*/}
+        {this.state.isAsync && <Four />}
+        </li>
       </ul>
     </div>
   );
+  }
 }
 
 IndexPage.propTypes = {};
