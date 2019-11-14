@@ -18,7 +18,7 @@ dynamic import不知道为什么有很多叫法，什么按需加载，懒加载
    `
 - 第二步：安装 react-loadable
    `npm i -S react-loadable 以后，我们就能愉快得做dynamic import了`
--第三步： 可以开始写代码啦
+- 第三步： 可以开始写代码啦
 1、index.js, 加载组件IndexPage并且 指定文件名称为IndexPage
 ```
 import Loadable from 'react-loadable';
@@ -65,6 +65,9 @@ function IndexPage() {
 export default IndexPage;
 
 ```
+最后效果
+点击按钮 加载出 IndexPage.async.js
+![懒加载](./lazyImg.jpg)
 Question？
 如果自定义文件名称不生效
 在webpack.config.js配置chunkFilename
